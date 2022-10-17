@@ -33,6 +33,7 @@ namespace Persistence.Contexts
             //        optionsBuilder.UseSqlServer(Configuration.GetConnectionString("SomeConnectionString")));
         }
 
+        // datbasede oluşturulacak tablolar burda model edilir kodla sonra database oluşturulur migration ile
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Brand>(a =>
@@ -56,7 +57,7 @@ namespace Persistence.Contexts
             });
 
 
-
+// Seed data tablo oluşturulrken içinde hali hazırda bulunduracak datalar demektir.
             Brand[] brandEntitySeeds = { new(1, "BMW"), new(2, "Mercedes") };
             modelBuilder.Entity<Brand>().HasData(brandEntitySeeds);
 
