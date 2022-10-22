@@ -14,7 +14,8 @@ namespace WebAPI.Controllers
     public class BrandsController : BaseController
     {
         /// <summary>
-        /// body içinde ekleme işlemi yapılacak bir sorgu alınmakta ve Mediator araclığıyla ilgili sorgunun handlerına yollanmakta.
+        /// body içinde ekleme işlemi yapılacak bir sorgu alınmakta 
+        /// ve Mediator araclığıyla ilgili sorgunun handlerına yollanmakta.
         /// Handler ise Application/Features/ İlgili entity klasörü/createEntityCommand içinde
         /// </summary>
        

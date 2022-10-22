@@ -15,19 +15,25 @@ namespace Application.Features.Brands.Commands.CreateBrand
     public partial class CreateBrandCommand:IRequest<CreatedBrandDto>
     {
         /// <summary>
-        /// api create isteğinde bulunduğunda entity nin alanlarıyla( command için gerekli olan alanalrı burda tanıtmak yeterli) işlev görür. 
+        /// api create isteğinde bulunduğunda entity nin alanlarıyla (command için gerekli olan alanalrı burda tanıtmak yeterli) işlev görür. 
         /// Bu alan üzerinden handler ile birlikte command işlenir.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        ///  Apiden gönderilen command Mediator sayesinde buraya gönderilir.Mediator, IRequestHandler araclığıyla buraya gelmesi gerektiğini anlar.
+        /// CreateBrandCommandHandler sorgu atar ve gelen cevabı dto ya yükler 
+        ///  Apiden gönderilen command Mediator sayesinde buraya gönderilir.
+        ///  Mediator, IRequestHandler araclığıyla buraya gelmesi gerektiğini anlar.
         /// </summary>
         public class CreateBrandCommandHandler : IRequestHandler<CreateBrandCommand, CreatedBrandDto>
         {
+            // servis işlemlerimi görecek
             private readonly IBrandRepository _brandRepository;
+            //entity ile dtoları mapler
             private readonly IMapper _mapper;
+            // bu entity için kurallarım
             private readonly BrandBusinessRules _brandBusinessRules;
+
             /// <summary>
             /// handler içinde iş kuralları kullanılır.
             /// </summary>
@@ -45,8 +51,8 @@ namespace Application.Features.Brands.Commands.CreateBrand
                 await _brandBusinessRules.BrandNameCanNotBeDuplicatedWhenInserted(request.Name);
 
                 Brand mappedBrand = _mapper.Map<Brand>(request); //marka,entity ile eşlenir
-                Brand createdBrand = await _brandRepository.AddAsync(mappedBrand); //repository aracılığyla db ye entity eklenir. Artık id si var 
-                CreatedBrandDto createdBrandDto = _mapper.Map<CreatedBrandDto>(createdBrand);// Kullanıcıya eklenen entityi döndürmek için
+                Brand createdBrand = await _brandRepository.AddAsync(mappedBrand); //repository aracılığyla db ye entity eklenir. Artık id si var. db de oluşturulan brand, createdBrand nesnesine atanır. 
+                CreatedBrandDto createdBrandDto = _mapper.Map<CreatedBrandDto>(createdBrand);//db den gelen nesneyi dto ya dönüştürüyorum . oluşturulan dto kullanıcıya sunulacak.
 
                 return createdBrandDto; //veritabanı nesnesini asla apiye yollama sadece göndermek istediğim kolonları dto ile gönderiyorum.
 

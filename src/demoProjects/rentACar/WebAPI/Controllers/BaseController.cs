@@ -5,6 +5,7 @@ namespace WebAPI.Controllers
 {
     public class BaseController : ControllerBase
     {
+        //BaseController, Mediator için hazırlanmıştır. Mediatorun çözümlenip servisleri aktif etmesi için mevcut
         protected IMediator? Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
         private IMediator? _mediator;
 

@@ -14,6 +14,10 @@ namespace Application.Features.Brands.Profiles
 {
     public class MappingProfiles : Profile
     {
+        /// <summary>
+        /// Mapleme işlemi yapılır bu classta. kaynak hedefe dönüştürülür AutoMapper sayesinde.
+        /// Veritabanı nesnem oluşturduğum model ve dtolar ile maplenir.
+        /// </summary>
         public MappingProfiles()
         {
             CreateMap<Brand,CreatedBrandDto>().ReverseMap();
