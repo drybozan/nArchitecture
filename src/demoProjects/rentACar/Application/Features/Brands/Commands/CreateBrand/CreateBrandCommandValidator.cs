@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Brands.Commands.CreateBrand
 {
+    // AbstractValidator, FluentValidationun aracıdır.
+    // hangi command için validation kullanılacağı belirtmek gerek
     public class CreateBrandCommandValidator:AbstractValidator<CreateBrandCommand>
     {
+        // add işlemi için kullanılan validator.
         public CreateBrandCommandValidator()
         {
             RuleFor(c => c.Name).NotEmpty();
