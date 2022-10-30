@@ -10,7 +10,7 @@ namespace Application.Features.Models.Dtos
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string BrandName { get; set; }
+        public string BrandName { get; set; } //brandId üzerinden veri alıanacak
         public decimal DailyPrice { get; set; }
         public string ImageUrl { get; set; }
 

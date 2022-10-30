@@ -10,7 +10,10 @@ namespace Application.Features.Auths.Dtos
 {
     public class RefreshedTokenDto
     {
+        //token ve kullanım süresi mevcut
         public AccessToken AccessToken { get; set; }
+
+        // token yenileme için
         public RefreshToken RefreshToken { get; set; }
     }
 }

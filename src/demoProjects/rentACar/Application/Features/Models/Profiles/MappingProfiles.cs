@@ -15,6 +15,7 @@ namespace Application.Features.Models.Profiles
     {
         public MappingProfiles()
         {
+            // aralarında ilişki olan entitiy için
             CreateMap<Model, ModelListDto>()
                 .ForMember(c=>c.BrandName, opt=>opt.MapFrom(c=>c.Brand.Name))
                 .ReverseMap();

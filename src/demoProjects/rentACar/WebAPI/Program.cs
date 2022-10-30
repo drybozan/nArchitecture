@@ -33,6 +33,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
+//swaggerda auth olabilmesi için ayar
+
 builder.Services.AddSwaggerGen(opt =>
 {
     opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

@@ -11,6 +11,7 @@ namespace Application.Features.Auths.Rules
 {
     public class AuthBusinessRules
     {
+        // kullanıcılarım içinde register olacak email var mı kontrolünü sağlar.
         private readonly IUserRepository _userRepository;
 
         public AuthBusinessRules(IUserRepository userRepository)

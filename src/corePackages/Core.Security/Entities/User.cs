@@ -10,7 +10,11 @@ public class User : Entity
     public string Email { get; set; }
     public byte[] PasswordSalt { get; set; }
     public byte[] PasswordHash { get; set; }
+
+    //kullanıcı aktif mi değil mi 
     public bool Status { get; set; }
+
+    //hangi tiple authenice olacak ?
     public AuthenticatorType AuthenticatorType { get; set; }
 
     public virtual ICollection<UserOperationClaim> UserOperationClaims { get; set; }

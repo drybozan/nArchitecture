@@ -17,6 +17,7 @@ namespace Application.Features.Models.Queries.GetListModelByDynamic
 {
     public class GetListModelByDynamicQuery : IRequest<ModelListModel>
     {
+        // burda bir dinamik sorgu yazacağımı bildiyorum.
         public Dynamic Dynamic { get; set; }
         public PageRequest PageRequest { get; set; }
 
@@ -34,7 +35,7 @@ namespace Application.Features.Models.Queries.GetListModelByDynamic
 
             public async Task<ModelListModel> Handle(GetListModelByDynamicQuery request, CancellationToken cancellationToken)
             {
-                //car models
+                //dinamik bir sorgu attığımı dynamic nesnesi ile bildiriyorum
                 IPaginate<Model> models = await _modelRepository.GetListByDynamicAsync(request.Dynamic,include:
                                               m => m.Include(c => c.Brand),
                                               index: request.PageRequest.Page,

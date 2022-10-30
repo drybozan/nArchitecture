@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Auths.Dtos
 {
+    //register olduğunda register tokenı olduğunu belirtmek için dto
     public class RegisteredDto:RefreshedTokenDto
     {
-        //
+      
     }
 }

@@ -13,6 +13,7 @@ namespace Domain.Entities
         public string Name { get; set; }
         public decimal DailyPrice { get; set; }
         public string ImageUrl { get; set; }
+        // modellerin bir markası olur dolayısıyla 1-n ilişki.
         public virtual Brand? Brand { get; set; }
 
         public Model()

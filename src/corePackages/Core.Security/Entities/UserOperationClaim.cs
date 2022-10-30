@@ -2,6 +2,8 @@
 
 namespace Core.Security.Entities;
 
+
+// hangi user hangi claime sahip
 public class UserOperationClaim : Entity
 {
     public int UserId { get; set; }

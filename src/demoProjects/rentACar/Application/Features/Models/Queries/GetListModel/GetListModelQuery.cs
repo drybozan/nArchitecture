@@ -16,6 +16,7 @@ namespace Application.Features.Models.Queries.GetListModel
 {
     public class GetListModelQuery:IRequest<ModelListModel>
     {
+        //sayfalama veri alınacak 
         public PageRequest PageRequest { get; set; }
 
         public class GetListModelQueryHandler : IRequestHandler<GetListModelQuery, ModelListModel>
@@ -33,6 +34,7 @@ namespace Application.Features.Models.Queries.GetListModel
             public async Task<ModelListModel> Handle(GetListModelQuery request, CancellationToken cancellationToken)
             {
                                  //car models
+                //include sayesinde join işlemi yapabilirim. Model içindeyken Brand özelliklerine erişiyorum.
                 IPaginate<Model> models = await _modelRepository.GetListAsync(include: 
                                               m=>m.Include(c=>c.Brand),
                                               index:request.PageRequest.Page,

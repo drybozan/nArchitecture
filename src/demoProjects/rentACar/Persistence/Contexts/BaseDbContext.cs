@@ -16,8 +16,11 @@ namespace Persistence.Contexts
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<User> Users { get; set; }
+        //roller
         public DbSet<OperationClaim> OperationClaims { get; set; }
+        //kullanıcıların rolleri n-n ilişki
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        // verilen token dışında token yenileme için
         public DbSet<RefreshToken> RefreshTokens { get; set; }
 
 
@@ -41,7 +44,7 @@ namespace Persistence.Contexts
                 a.ToTable("Brands").HasKey(k => k.Id);
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.Name).HasColumnName("Name");
-                a.HasMany(p=>p.Models);
+                a.HasMany(p=>p.Models);  // 1 e n ilişki
             });
 
             modelBuilder.Entity<Model>(a =>
@@ -52,12 +55,14 @@ namespace Persistence.Contexts
                 a.Property(p => p.Name).HasColumnName("Name");
                 a.Property(p => p.DailyPrice).HasColumnName("DailyPrice");
                 a.Property(p => p.ImageUrl).HasColumnName("ImageUrl");
-                a.HasOne(p => p.Brand);
+                a.HasOne(p => p.Brand); //n e 1 ilişki
 
             });
 
+            /// tanımlnan tüm db setler için burda kolonları tanımla user,operation için eksik
 
-// Seed data tablo oluşturulrken içinde hali hazırda bulunduracak datalar demektir.
+
+            // Seed data tablo oluşturulrken içinde hali hazırda bulunduracak datalar demektir.
             Brand[] brandEntitySeeds = { new(1, "BMW"), new(2, "Mercedes") };
             modelBuilder.Entity<Brand>().HasData(brandEntitySeeds);
 
